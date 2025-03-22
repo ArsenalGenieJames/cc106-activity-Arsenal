@@ -13,6 +13,9 @@
             <span class="navbar-brand mb-0 h1">Monthly Expense Calculator</span>
             <div class="d-flex">
                 <div class="me-3">
+                    <span class="text-info"></span>Initial Budgets: <span class="initialbudgetss" id="inibudgets">0</span>
+                </div>
+                <div class="me-3">
                     <span class="text-success">Income: </span><span class="income" id="income">0</span>
                 </div>
                 <div class="me-3">
@@ -21,23 +24,38 @@
                 <div>
                     <span class="text-primary">Balance: </span><span class="total" id="balance">0</span>
                 </div>
+                
             </div>
         </div>
     </div>
 
+    <form>
+        <div class="container">
+            <div class="row">
+                <div class="col mt-3 p-3 border rouded bg-light m-3">
+                    <strong>Initial Budget</strong>
+                    <input type="number" class="form-control" id="initialbudget" placeholder="Input Initial Budget">
+                    <button class="btn btn-primary mt-2" type="button" id="initial-button">Initial budget</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
     <div class="container">
         <div class="row">
-            <div class="col mt-3 p-3 border rounded bg-light m-3">
-                <strong>Add Transaction</strong>
-                <input type="text" class="form-control" placeholder="Enter Name" id="name">
-                <input type="text" class="form-control mt-3" placeholder="Category" id="category">
-                <div class="mt-3 mb-3">
-                    <button class="btn btn-outline-success me-2 " id="incomebutton" >Income</button>
-                     <button class="btn btn-outline-danger" id="expensebutton">Expense</button>
+                <div class="col mt-3 p-3 border rounded bg-light m-3">
+                    <strong>Add Transaction</strong>
+                    <input type="text" class="form-control" placeholder="Enter Name" id="name">
+                    <input type="text" class="form-control mt-3" placeholder="Category" id="category">
+                    <div class="mt-3 mb-3">
+                        <button class="btn btn-outline-success me-2 " id="incomebutton" >Income</button>
+                        <button class="btn btn-outline-danger" id="expensebutton">Expense</button>
+                    </div>
+                    <input type="text" class="form-control mt-3 mb-3" placeholder="Amount">
+                    <button class="btn btn-primary" id="submit">Submit</button>
                 </div>
-                <input type="text" class="form-control mt-3 mb-3" placeholder="Amount">
-                <button class="btn btn-primary" id="submit">Submit</button>
-            </div>
+
             <div class="col mt-3 p-3 border  rounded bg-light m-3">
                 <strong>Transaction List</strong>
                 <ul class="list-group">
@@ -48,7 +66,8 @@
                         <span>Amount</span>
                     </li>
                 </ul>
-            </div>            
+            </div>     
+
         </div>
     </div>
 

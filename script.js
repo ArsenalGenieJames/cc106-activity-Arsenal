@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     let income = 0;
     let expenses = 0;
+    let inibudgets = 0;
 
     const incomeSpan = document.getElementById('income');
     const expensesSpan = document.getElementById('expenses');
     const balanceSpan = document.getElementById('balance');
+    const inibudgetsSpan = document.getElementById('inibudgets');
     const transactionList = document.querySelector('.list-group');
 
     document.getElementById('submit').addEventListener('click', () => {
@@ -12,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const category = document.getElementById('category').value.trim();
         const type = document.querySelector('.btn-outline-success.active') ? 'Income' : 'Expense';
         const amount = parseFloat(document.querySelector('input[placeholder="Amount"]').value.trim());
+        
 
         if (!name || !category || isNaN(amount)) {
             alert('Please fill in all fields and provide a valid amount.');
@@ -32,7 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
             income += amount;
         } else if (type === 'Expense') {
             expenses += amount;
-        }
+        }else(inibudgets - expenses );
+
         updateTotals();
 
         document.getElementById('name').value = '';
@@ -50,9 +54,21 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('expensebutton').classList.add('active');
     });
 
+    document.getElementById('initial-button').addEventListener('click', () => {
+        const initialBudget = parseFloat(document.getElementById('initialbudget').value.trim());
+        if (isNaN(initialBudget)) {
+            alert('Please provide a valid initial budget.');
+            return;
+        }
+        inibudgets = initialBudget;
+        inibudgetsSpan.textContent = inibudgets.toFixed(2);
+        document.getElementById('initialbudget').value = '';
+        updateTotals();
+    });
+
     function updateTotals() {
         incomeSpan.textContent = income.toFixed(2);
         expensesSpan.textContent = expenses.toFixed(2);
-        balanceSpan.textContent = (income - expenses).toFixed(2);
+        balanceSpan.textContent = (inibudgets + income - expenses).toFixed(2);
     }
 });
